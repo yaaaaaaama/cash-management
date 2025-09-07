@@ -54,9 +54,7 @@
                 <h2 class="text-5xl font-bold mb-6">現金管理の煩雑さを<br>一瞬で解決</h2>
                 <p class="text-xl mb-8 opacity-90">ワンクリックで現金入出金を記録し、自動で帳簿に反映。<br>月末の入金消込作業も自動化で、経理業務を革新します。</p>
                 <div class="flex flex-col sm:flex-row justify-center gap-4 mb-12">
-                    <button class="border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-purple-600 transition duration-300">
-                        <i class="fas fa-calendar mr-2"></i>デモを予約
-                    </button>
+                    <a href="#beta-signup" class="cta-button">ベータ版優先案内を受け取る</a>    
                 </div>
             </div>
         </div>
@@ -263,19 +261,56 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="py-20 gradient-bg text-white">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+
+ <!-- Final CTA Section -->
+    <section class="final-cta" id="beta-signup">
+        <div class="container">
+            <div class="final-cta-content">
             <h3 class="text-4xl font-bold mb-6">今すぐ現金管理を革新しませんか？</h3>
             <p class="text-xl mb-8 opacity-90">30日間無料で全機能をお試しいただけます。<br>面倒な現金管理業務から解放されましょう。</p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4 mb-8">
-                <button class="border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-purple-600 transition duration-300">
-                    <i class="fas fa-phone mr-2"></i>お電話でご相談
-                </button>
+
+                
+                <div class="beta-form">
+                    <h3 style="margin-bottom: 30px; font-size: 1.5em;">ベータ版優先案内お申し込み</h3>
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <label for="company">会社名 *</label>
+                            <input type="text" id="company" name="company" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">お名前 *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">メールアドレス *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">電話番号</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="industry">業界</label>
+                            <select id="industry" name="industry">
+                                <option value="">選択してください</option>
+                                <option value="manufacturing">製造業</option>
+                                <option value="insurance">保険業</option>
+                                <option value="real-estate">不動産業</option>
+                                <option value="it">IT・ソフトウェア</option>
+                                <option value="finance">金融業</option>
+                                <option value="consulting">コンサルティング</option>
+                                <option value="other">その他</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="cta-button" style="width: 100%; margin-top: 20px;">
+                            優先案内を受け取る
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
-
+    
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
