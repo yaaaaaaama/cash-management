@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CashFlow Manager - 現金管理を革新する経理DXツール</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .card-shadow {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .feature-icon {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <i class="fas fa-cash-register text-3xl text-purple-600 mr-3"></i>
+                    <h1 class="text-2xl font-bold text-gray-900">CashFlow Manager</h1>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#features" class="text-gray-700 hover:text-purple-600 font-medium">機能紹介</a>
+                    <a href="#pricing" class="text-gray-700 hover:text-purple-600 font-medium">料金プラン</a>
+                    <a href="#case-studies" class="text-gray-700 hover:text-purple-600 font-medium">導入事例</a>
+                    <a href="#faq" class="text-gray-700 hover:text-purple-600 font-medium">FAQ</a>
+                </div>
+                <button class="bg-purple-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-purple-700 transition duration-300">
+                    無料体験開始
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-5xl font-bold mb-6">現金管理の煩雑さを<br>一瞬で解決</h2>
+                <p class="text-xl mb-8 opacity-90">ワンクリックで現金入出金を記録し、自動で帳簿に反映。<br>月末の入金消込作業も自動化で、経理業務を革新します。</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4 mb-12">
+                    <button class="bg-white text-purple-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition duration-300">
+                        <i class="fas fa-play mr-2"></i>30日間無料で試す
+                    </button>
+                    <button class="border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-purple-600 transition duration-300">
+                        <i class="fas fa-calendar mr-2"></i>デモを予約
+                    </button>
+                </div>
+                <div class="flex justify-center items-center space-x-8 text-sm opacity-80">
+                    <div class="flex items-center">
+                        <i class="fas fa-check-circle mr-2"></i>導入実績500社以上
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-shield-alt mr-2"></i>金融機関レベルのセキュリティ
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-clock mr-2"></i>業務時間90%削減
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h3 class="text-4xl font-bold text-gray-900 mb-6">こんな課題でお困りではありませんか？</h3>
+                <p class="text-xl text-gray-600">多くの中小企業が抱える現金管理の課題</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center p-6 bg-red-50 rounded-xl">
+                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-copy text-2xl text-red-600"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-gray-900 mb-3">重複入力の手間</h4>
+                    <p class="text-gray-600">現金入金時に複数の帳簿へ手作業で入力する非効率性</p>
+                </div>
+                <div class="text-center p-6 bg-orange-50 rounded-xl">
+                    <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-exclamation-triangle text-2xl text-orange-600"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-gray-900 mb-3">ヒューマンエラー</h4>
+                    <p class="text-gray-600">転記ミス・記帳漏れによる集計エラーや突合不一致</p>
+                </div>
+                <div class="text-center p-6 bg-yellow-50 rounded-xl">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-puzzle-piece text-2xl text-yellow-600"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-gray-900 mb-3">情報の分散</h4>
+                    <p class="text-gray-600">現金と銀行振込の管理が別々で突合作業が煩雑</p>
+                </div>
+                <div class="text-center p-6 bg-blue-50 rounded-xl">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-clock text-2xl text-blue-600"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-gray-900 mb-3">月末の負荷</h4>
+                    <p class="text-gray-600">入金消込作業に時間がかかり、属人化している</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h3 class="text-4xl font-bold text-gray-900 mb-6">CashFlow Managerがすべて解決</h3>
+                <p class="text-xl text-gray-600 mb-8">ワンクリック入力と自動化で、現金管理を革新します</p>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="space-y-8">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-mouse-pointer text-purple-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-gray-900 mb-2">ワンクリック入力</h4>
+                                <p class="text-gray-600">現金の受取・支出をボタン一つで入力。自動的に関連帳簿へ反映されます。</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-sync-alt text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-gray-900 mb-2">自動帳簿反映</h4>
+                                <p class="text-gray-600">現金出納帳、売掛金台帳など複数の帳簿に自動で記録。重複入力は不要です。</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-database text-green-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-gray-900 mb-2">一元管理</h4>
+                                <p class="text-gray-600">現金・銀行振込を統合管理。リアルタイムで残高を把握できます。</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-magic text-red-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-gray-900 mb-2">自動消込</h4>
+                                <p class="text-gray-600">請求情報と入金情報を流し込むだけで、月末の消込作業が自動完了。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-2xl card-shadow">
+                    <div class="text-center mb-6">
+                        <h4 class="text-2xl font-bold text-gray-900 mb-2">業務効率化の効果</h4>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center p-4 bg-green-50 rounded-lg">
+                            <span class="font-medium text-gray-900">入力作業時間</span>
+                            <span class="text-green-600 font-bold text-xl">90%削減</span>
+                        </div>
+                        <div class="flex justify-between items-center p-4 bg-blue-50 rounded-lg">
+                            <span class="font-medium text-gray-900">転記ミス</span>
+                            <span class="text-blue-600 font-bold text-xl">ゼロ化</span>
+                        </div>
+                        <div class="flex justify-between items-center p-4 bg-purple-50 rounded-lg">
+                            <span class="font-medium text-gray-900">月末処理時間</span>
+                            <span class="text-purple-600 font-bold text-xl">80%短縮</span>
+                        </div>
+                        <div class="flex justify-between items-center p-4 bg-orange-50 rounded-lg">
+                            <span class="font-medium text-gray-900">経理人員</span>
+                            <span class="text-orange-600 font-bold text-xl">半減可能</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h3 class="text-4xl font-bold text-gray-900 mb-6">充実の機能でビジネスを加速</h3>
+                <p class="text-xl text-gray-600">中小企業の現金管理に必要な機能をすべて搭載</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl card-shadow border-l-4 border-purple-500">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-hand-holding-usd feature-icon text-2xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">現金入出金管理</h4>
+                    <p class="text-gray-600">直感的なUIで現金の受取・支払を瞬時に記録。金額、相手先、目的を簡単入力。</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl card-shadow border-l-4 border-blue-500">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-book feature-icon text-2xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">自動帳簿作成</h4>
+                    <p class="text-gray-600">現金出納帳、売掛金台帳、買掛金台帳を自動生成。税理士への提出もワンクリック。</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl card-shadow border-l-4 border-green-500">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-university feature-icon text-2xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">銀行連携</h4>
+                    <p class="text-gray-600">主要銀行との自動連携で振込データを取得。現金と合わせて一元管理できます。</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl card-shadow border-l-4 border-red-500">
+                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-check-double feature-icon text-2xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">自動消込機能</h4>
+                    <p class="text-gray-600">請求書データと入金データの突合を自動化。月末処理の工数を大幅削減します。</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl card-shadow border-l-4 border-yellow-500">
+                    <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-chart-line feature-icon text-2xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">リアルタイム分析</h4>
+                    <p class="text-gray-600">現金残高、入金状況、未収金をリアルタイムで可視化。経営判断を迅速化します。</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl card-shadow border-l-4 border-indigo-500">
+                    <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-mobile-alt feature-icon text-2xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">モバイル対応</h4>
+                    <p class="text-gray-600">外出先でもスマホから現金管理。営業車での集金もその場で記録できます。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h3 class="text-4xl font-bold text-gray-900 mb-6">シンプルで分かりやすい料金体系</h3>
+                <p class="text-xl text-gray-600">すべてのプランで30日間無料体験できます</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl card-shadow">
+                    <div class="text-center mb-6">
+                        <h4 class="text-2xl font-bold text-gray-900 mb-2">スタータープラン</h4>
+                        <div class="text-4xl font-bold text-purple-600 mb-2">¥9,800<span class="text-lg text-gray-500">/月</span></div>
+                        <p class="text-gray-600">小規模事業者向け</p>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>現金入出金管理</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>基本帳簿自動作成</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>月次レポート</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>メールサポート</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>利用者数：3名まで</li>
+                    </ul>
+                    <button class="w-full bg-purple-600 text-white py-3 rounded-lg font-medium hover:bg-purple-700 transition duration-300">
+                        無料で試してみる
+                    </button>
+                </div>
+                <div class="bg-white p-8 rounded-xl card-shadow border-2 border-purple-500 relative">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                        <span class="bg-purple-500 text-white px-4 py-1 rounded-full text-sm font-medium">おすすめ</span>
+                    </div>
+                    <div class="text-center mb-6">
+                        <h4 class="text-2xl font-bold text-gray-900 mb-2">ビジネスプラン</h4>
+                        <div class="text-4xl font-bold text-purple-600 mb-2">¥19,800<span class="text-lg text-gray-500">/月</span></div>
+                        <p class="text-gray-600">成長企業向け</p>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>すべてのスタータープラン機能</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>銀行連携</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>自動消込機能</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>高度な分析レポート</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>電話サポート</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>利用者数：10名まで</li>
+                    </ul>
+                    <button class="w-full bg-purple-600 text-white py-3 rounded-lg font-medium hover:bg-purple-700 transition duration-300">
+                        無料で試してみる
+                    </button>
+                </div>
+                <div class="bg-white p-8 rounded-xl card-shadow">
+                    <div class="text-center mb-6">
+                        <h4 class="text-2xl font-bold text-gray-900 mb-2">エンタープライズ</h4>
+                        <div class="text-4xl font-bold text-purple-600 mb-2">お問い合わせ</div>
+                        <p class="text-gray-600">大企業・グループ会社向け</p>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>すべてのビジネスプラン機能</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>カスタマイズ対応</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>専用サーバー</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>24時間サポート</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>利用者数：無制限</li>
+                    </ul>
+                    <button class="w-full bg-gray-600 text-white py-3 rounded-lg font-medium hover:bg-gray-700 transition duration-300">
+                        お問い合わせ
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section id="case-studies" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h3 class="text-4xl font-bold text-gray-900 mb-6">導入事例</h3>
+                <p class="text-xl text-gray-600">様々な業種で効果を実感いただいています</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl card-shadow">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-store text-blue-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">株式会社田中商店</h4>
+                            <p class="text-sm text-gray-600">小売業・従業員15名</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">「現金での売上管理が複雑でしたが、CashFlow Managerで劇的に改善。月末処理が3日から半日に短縮されました。」</p>
+                    <div class="bg-green-50 p-3 rounded-lg">
+                        <div class="text-green-600 font-bold">効果：処理時間85%削減</div>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-xl card-shadow">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-utensils text-orange-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">レストラン花月</h4>
+                            <p class="text-sm text-gray-600">飲食業・従業員8名</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">「現金売上の記録が面倒でしたが、モバイル対応で営業中でも簡単に入力できるようになりました。」</p>
+                    <div class="bg-blue-50 p-3 rounded-lg">
+                        <div class="text-blue-600 font-bold">効果：入力作業時間90%削減</div>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-xl card-shadow">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-hammer text-green-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">山田建設工業</h4>
+                            <p class="text-sm text-gray-600">建設業・従業員25名</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">「現場での現金支払いが多く管理が大変でしたが、リアルタイムで残高把握できるようになり助かっています。」</p>
+                    <div class="bg-purple-50 p-3 rounded-lg">
+                        <div class="text-purple-600 font-bold">効果：現金管理精度99%向上</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h3 class="text-4xl font-bold text-gray-900 mb-6">よくあるご質問</h3>
+                <p class="text-xl text-gray-600">導入前の疑問にお答えします</p>
+            </div>
+            <div class="space-y-6">
+                <div class="bg-white p-6 rounded-xl card-shadow">
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">導入にはどのくらいの期間が必要ですか？</h4>
+                    <p class="text-gray-600">基本的な設定は1日で完了します。銀行連携などの追加設定を含めても1週間以内に運用開始できます。専任サポートスタッフが導入をフルサポートいたします。</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl card-shadow">
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">既存の会計システムとの連携は可能ですか？</h4>
+                    <p class="text-gray-600">主要な会計ソフト（弥生会計、勘定奉行、freeeなど）とのデータ連携に対応しています。CSVファイルでのデータ出力も可能です。</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl card-shadow">
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">セキュリティは大丈夫ですか？</h4>
+                    <p class="text-gray-600">金融機関レベルの暗号化技術（SSL/TLS 1.3）を採用し、データは国内の堅牢なデータセンターで管理しています。定期的なセキュリティ監査も実施しています。</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl card-shadow">
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">サポート体制はどうなっていますか？</h4>
+                    <p class="text-gray-600">メール・電話・チャットでのサポートを提供。操作方法から運用コンサルティングまで、経験豊富なスタッフがサポートします。導入時の個別研修も行っています。</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl card-shadow">
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">無料体験期間中に解約した場合、料金は発生しますか？</h4>
+                    <p class="text-gray-600">30日間の無料体験期間中はいつでも解約可能で、料金は一切発生しません。また、解約後もデータの削除確認をいたしますのでご安心ください。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 gradient-bg text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h3 class="text-4xl font-bold mb-6">今すぐ現金管理を革新しませんか？</h3>
+            <p class="text-xl mb-8 opacity-90">30日間無料で全機能をお試しいただけます。<br>面倒な現金管理業務から解放されましょう。</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 mb-8">
+                <button class="bg-white text-purple-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition duration-300">
+                    <i class="fas fa-rocket mr-2"></i>30日間無料で始める
+                </button>
+                <button class="border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-purple-600 transition duration-300">
+                    <i class="fas fa-phone mr-2"></i>お電話でご相談
+                </button>
+            </div>
+            <div class="text-sm opacity-80">
+                <p>クレジットカード不要 | 契約の縛りなし | 導入サポート無料</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-cash-register text-2xl text-purple-400 mr-3"></i>
+                        <h4 class="text-xl font-bold">CashFlow Manager</h4>
+                    </div>
+                    <p class="text-gray-400 mb-4">現金管理を革新する経理DXツール</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-4">製品情報</h5>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">機能紹介</a></li>
+                        <li><a href="#" class="hover:text-white">料金プラン</a></li>
+                        <li><a href="#" class="hover:text-white">導入事例</a></li>
+                        <li><a href="#" class="hover:text-white">セキュリティ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-4">サポート</h5>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">ヘルプセンター</a></li>
+                        <li><a href="#" class="hover:text-white">お問い合わせ</a></li>
+                        <li><a href="#" class="hover:text-white">導入支援</a></li>
+                        <li><a href="#" class="hover:text-white">システム状況</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-4">会社情報</h5>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">会社概要</a></li>
+                        <li><a href="#" class="hover:text-white">プライバシーポリシー</a></li>
+                        <li><a href="#" class="hover:text-white">利用規約</a></li>
+                        <li><a href="#" class="hover:text-white">採用情報</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 CashFlow Manager. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDiAm43RB7VbfSuxwHD7sj9iSzJ%2B51qrYDFSSmWdIyvTLw9AA8pvWLPNMepWWzk%2FeDkdIYDoknato9%2FXmMX1ceJlEhQhEucXG%2FIstWVhyodvMQ9fK84Zl8h8oLdLGM133wLL%2BZOyj3BbOlHG7g5%2FGNAxQx4Vgvd6JnvCaBF7uLq5JMdUEsExLUbSimEa4nvxRyNkDghZ50PCBT8dhnHHSXPqIDxUgyrGRypETcahpF3cAEq0T9J1c6T%2Ba%2FMY%2FAHiIZJXUiB4IMAYOD9mReEMkGwHHgQsN9j2T59QfqyOy1YYvXB9qKVEPNXlO9Oa4HVYcFcuBMK7%2B0zHdE77bmvoa4eHOqrcmeHviGGbGaQS1qExsySsUPQCgCcxSOYAio1joQDezoIHQvIT%2F4InL44mcmom92eMjY6KMt7kBNhPxWFRkV4gqElYo2Ptw9%2F8ZgwbXPIuFgvQTYE1F%2FxZGcKMyr3gQyvLsXomg7RfpM%2FMRiN7unTGQ5qxqo0ltu5%2Fv4rO98A%3D%3D";
+        window.__genspark_locale = "ja-JP";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDiAm43RB7VbfSuxwHD7sj9iSzJ+51qrYDFSSmWdIyvTLw9AA8pvWLPNMepWWzk/eDkdIYDoknato9/XmMX1ceJlEhQhEucXG/IstWVhyodvMQ9fK84Zl8h8oLdLGM133wLL+ZOyj3BbOlHG7g5/GNAxQx4Vgvd6JnvCaBF7uLq5JMdUEsExLUbSimEa4nvxRyNkDghZ50PCBT8dhnHHSXPqIDxUgyrGRypETcahpF3cAEq0T9J1c6T+a/MY/AHiIZJXUiB4IMAYOD9mReEMkGwHHgQsN9j2T59QfqyOy1YYvXB9qKVEPNXlO9Oa4HVYcFcuBMK7+0zHdE77bmvoa4eHOqrcmeHviGGbGaQS1qExsySsUPQCgCcxSOYAio1joQDezoIHQvIT/4InL44mcmom92eMjY6KMt7kBNhPxWFRkV4gqElYo2Ptw9/8ZgwbXPIuFgvQTYE1F/xZGcKMyr3gQyvLsXomg7RfpM/MRiN7unTGQ5qxqo0ltu5/v4rO98A==";
+    </script>
+    
+    <script id="html_notice_dialog_script" src="https://www.genspark.ai/notice_dialog.js"></script>
+    
