@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CashFlow Manager - 現金管理を革新する経理DXツール</title>
+    
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -21,6 +31,105 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+        
+        /* Sales Buddy Style Form */
+        .final-cta {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 80px 0;
+            color: white;
+        }
+        
+        .final-cta .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .final-cta-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .beta-form {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 40px;
+            color: #333;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 24px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #374151;
+            font-size: 14px;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ffa500 100%);
+            color: white;
+            padding: 18px 36px;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 8px 24px rgba(255, 107, 107, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(255, 107, 107, 0.4);
+        }
+        
+        @media (max-width: 768px) {
+            .final-cta {
+                padding: 60px 0;
+            }
+            
+            .beta-form {
+                padding: 30px 20px;
+                margin-top: 30px;
+                border-radius: 20px;
+            }
+            
+            .final-cta h3 {
+                font-size: 2rem !important;
+            }
+            
+            .final-cta p {
+                font-size: 1rem !important;
+            }
         }
     </style>
 </head>
@@ -261,14 +370,12 @@
         </div>
     </section>
 
-
- <!-- Final CTA Section -->
+    <!-- Final CTA Section -->
     <section class="final-cta" id="beta-signup">
         <div class="container">
             <div class="final-cta-content">
-            <h3 class="text-4xl font-bold mb-6">今すぐ現金管理を革新しませんか？</h3>
-            <p class="text-xl mb-8 opacity-90">30日間無料で全機能をお試しいただけます。<br>面倒な現金管理業務から解放されましょう。</p>
-
+                <h3 class="text-4xl font-bold mb-6">今すぐ現金管理を革新しませんか？</h3>
+                <p class="text-xl mb-8 opacity-90">30日間無料で全機能をお試しいただけます。<br>面倒な現金管理業務から解放されましょう。</p>
                 
                 <div class="beta-form">
                     <h3 style="margin-bottom: 30px; font-size: 1.5em;">ベータ版優先案内お申し込み</h3>
@@ -322,12 +429,3 @@
 
 </body>
 </html>
-    <script id="html_badge_script1">
-        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
-            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDiAm43RB7VbfSuxwHD7sj9iSzJ%2B51qrYDFSSmWdIyvTLw9AA8pvWLPNMepWWzk%2FeDkdIYDoknato9%2FXmMX1ceJlEhQhEucXG%2FIstWVhyodvMQ9fK84Zl8h8oLdLGM133wLL%2BZOyj3BbOlHG7g5%2FGNAxQx4Vgvd6JnvCaBF7uLq5JMdUEsExLUbSimEa4nvxRyNkDghZ50PCBT8dhnHHSXPqIDxUgyrGRypETcahpF3cAEq0T9J1c6T%2Ba%2FMY%2FAHiIZJXUiB4IMAYOD9mReEMkGwHHgQsN9j2T59QfqyOy1YYvXB9qKVEPNXlO9Oa4HVYcFcuBMK7%2B0zHdE77bmvoa4eHOqrcmeHviGGbGaQS1qExsySsUPQCgCcxSOYAio1joQDezoIHQvIT%2F4InL44mcmom92eMjY6KMt7kBNhPxWFRkV4gqElYo2Ptw9%2F8ZgwbXPIuFgvQTYE1F%2FxZGcKMyr3gQyvLsXomg7RfpM%2FMRiN7unTGQ5qxqo0ltu5%2Fv4rO98A%3D%3D";
-        window.__genspark_locale = "ja-JP";
-        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDiAm43RB7VbfSuxwHD7sj9iSzJ+51qrYDFSSmWdIyvTLw9AA8pvWLPNMepWWzk/eDkdIYDoknato9/XmMX1ceJlEhQhEucXG/IstWVhyodvMQ9fK84Zl8h8oLdLGM133wLL+ZOyj3BbOlHG7g5/GNAxQx4Vgvd6JnvCaBF7uLq5JMdUEsExLUbSimEa4nvxRyNkDghZ50PCBT8dhnHHSXPqIDxUgyrGRypETcahpF3cAEq0T9J1c6T+a/MY/AHiIZJXUiB4IMAYOD9mReEMkGwHHgQsN9j2T59QfqyOy1YYvXB9qKVEPNXlO9Oa4HVYcFcuBMK7+0zHdE77bmvoa4eHOqrcmeHviGGbGaQS1qExsySsUPQCgCcxSOYAio1joQDezoIHQvIT/4InL44mcmom92eMjY6KMt7kBNhPxWFRkV4gqElYo2Ptw9/8ZgwbXPIuFgvQTYE1F/xZGcKMyr3gQyvLsXomg7RfpM/MRiN7unTGQ5qxqo0ltu5/v4rO98A==";
-    </script>
-    
-    <script id="html_notice_dialog_script" src="https://www.genspark.ai/notice_dialog.js"></script>
-    
