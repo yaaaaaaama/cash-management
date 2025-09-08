@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QVY0P82JKG"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-QVY0P82JKG');
+      gtag('config', 'G-XXXXXXXXXX');
     </script>
     
-    <title>CashFlow Manager - 現金管理システム</title>
+    <title>入金管理クラウド - 現金も振り込みもまとめて管理</title>
     <style>
         * {
             margin: 0;
@@ -127,7 +127,7 @@
 
         .problem-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 30px;
             margin-bottom: 50px;
         }
@@ -151,40 +151,53 @@
             display: block;
         }
 
-        .stats {
-            text-align: center;
-            margin-top: 40px;
+        .solutions {
+            padding: 80px 0;
+            background: white;
         }
 
-        .stats h3 {
-            font-size: 2rem;
-            margin-bottom: 30px;
+        .solutions h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
             color: #2c3e50;
         }
 
-        .stats-grid {
+        .solution-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
         }
 
-        .stat-item {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+        .solution-card {
+            display: flex;
+            align-items: flex-start;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
         }
 
-        .stat-number {
+        .solution-card:hover {
+            transform: translateX(10px);
+        }
+
+        .solution-icon {
             font-size: 2.5rem;
-            font-weight: 700;
+            margin-right: 20px;
             color: #667eea;
+            flex-shrink: 0;
+        }
+
+        .solution-content h4 {
+            font-size: 1.4rem;
             margin-bottom: 10px;
+            color: #2c3e50;
         }
 
         .features {
             padding: 80px 0;
-            background: white;
+            background: #f8f9fa;
         }
 
         .features h2 {
@@ -196,34 +209,86 @@
 
         .feature-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
         }
 
-        .feature-card {
-            display: flex;
-            align-items: flex-start;
-            padding: 25px;
-            background: #f8f9fa;
+        .feature-item {
+            background: white;
+            padding: 30px;
             border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
             transition: transform 0.3s ease;
         }
 
-        .feature-card:hover {
-            transform: translateX(10px);
+        .feature-item:hover {
+            transform: translateY(-5px);
         }
 
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-right: 20px;
-            color: #667eea;
-            flex-shrink: 0;
-        }
-
-        .feature-content h4 {
-            font-size: 1.4rem;
-            margin-bottom: 10px;
+        .feature-item h4 {
+            font-size: 1.2rem;
             color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .pricing {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .pricing h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .pricing-card {
+            max-width: 500px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.15);
+            padding: 40px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #ffd700;
+            margin: 20px 0;
+        }
+
+        .support {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .support h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: #2c3e50;
+        }
+
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+        }
+
+        .support-card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .support-card h4 {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
         }
 
         .contact {
@@ -355,6 +420,16 @@
                 margin: 0 20px;
                 padding: 30px 20px;
             }
+
+            .problem-grid,
+            .solution-grid,
+            .support-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
         }
 
         .success-message {
@@ -392,57 +467,60 @@
 <body>
     <section class="hero">
         <div class="container">
-            <h1>CashFlow Manager</h1>
-            <h2>現金管理の煩雑さを一瞬で解決</h2>
-            <p>ワンクリック入力で現金出納帳を自動作成。入金消込も自動化し、月末業務を90%削減します。</p>
-            <a href="#contact" class="cta-button">ベータ版優先案内を受け取る</a>
+            <h1>入金管理クラウド</h1>
+            <h2>現金も振り込みもまとめて管理</h2>
+            <p>現金出納から銀行取引まで自動で整理。<br>
+            今の未入金や残高まで正しく把握できます。</p>
+            <a href="#contact" class="cta-button">資料ダウンロード</a>
         </div>
     </section>
 
     <section class="problems">
         <div class="container">
-            <h2>こんな課題でお困りではありませんか？</h2>
+            <h2>こんなお悩みはありませんか？</h2>
             <div class="problem-grid">
                 <div class="problem-card">
-                    <span class="problem-icon">📝</span>
-                    <h3>重複入力の手間</h3>
-                    <p>現金入金時に複数の帳簿へ手作業で入力する非効率性</p>
-                </div>
-                <div class="problem-card">
-                    <span class="problem-icon">❌</span>
-                    <h3>ヒューマンエラー</h3>
-                    <p>転記ミス・記帳漏れによる集計エラーや突合不一致</p>
-                </div>
-                <div class="problem-card">
                     <span class="problem-icon">📊</span>
-                    <h3>情報の分散</h3>
-                    <p>現金と銀行振込の管理が別々で突合作業が煩雑</p>
+                    <h3>入金情報を1つの台帳に集約できない</h3>
+                    <p>特に現金発生時は複数帳簿への記入が必要なため、作業や転記ミス・記帳漏れが発生する恐れがある。</p>
                 </div>
                 <div class="problem-card">
-                    <span class="problem-icon">📅</span>
-                    <h3>月末の負荷</h3>
-                    <p>入金消込作業に時間がかかり、属人化している</p>
+                    <span class="problem-icon">⏰</span>
+                    <h3>属人的な消し込み業務の負荷</h3>
+                    <p>請求と入金情報の突合に時間がかかり、かつ業務が属人的となっている。</p>
+                </div>
+                <div class="problem-card">
+                    <span class="problem-icon">❓</span>
+                    <h3>未入金を正しく管理できていない</h3>
+                    <p>未入金をすぐに確認できない。結果、督促が必要な顧客などがわからない。</p>
                 </div>
             </div>
-            
-            <div class="stats">
-                <h3>業務効率化の効果</h3>
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="stat-number">90%</div>
-                        <p>月末業務時間削減</p>
+        </div>
+    </section>
+
+    <section class="solutions">
+        <div class="container">
+            <h2>入金管理クラウドはこれらの課題を全て解決します</h2>
+            <div class="solution-grid">
+                <div class="solution-card">
+                    <span class="solution-icon">📱</span>
+                    <div class="solution-content">
+                        <h4>現金の入出金をスマートフォンで簡単登録</h4>
+                        <p>出金時に受け取る領収書はAI OCRで読み取り。</p>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-number">100%</div>
-                        <p>転記ミス防止</p>
+                </div>
+                <div class="solution-card">
+                    <span class="solution-icon">🔄</span>
+                    <div class="solution-content">
+                        <h4>入金情報を一元管理</h4>
+                        <p>現金も銀行振り込みなどの分散した情報をまとめて管理。</p>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-number">60%</div>
-                        <p>作業工数削減</p>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">24h</div>
-                        <p>リアルタイム監視</p>
+                </div>
+                <div class="solution-card">
+                    <span class="solution-icon">⚡</span>
+                    <div class="solution-content">
+                        <h4>入金消込・仕訳を自動化</h4>
+                        <p>入金と請求情報を自動突合。仕訳を生成することで会計システムとの連携をスムーズに。</p>
                     </div>
                 </div>
             </div>
@@ -451,49 +529,52 @@
 
     <section class="features">
         <div class="container">
-            <h2>充実の機能でビジネスを加速</h2>
+            <h2>機能</h2>
             <div class="feature-grid">
-                <div class="feature-card">
-                    <span class="feature-icon">💰</span>
-                    <div class="feature-content">
-                        <h4>現金入出金管理</h4>
-                        <p>直感的なUIで現金の受取・支払を瞬時に記録。金額、相手先、目的を簡単入力。</p>
-                    </div>
+                <div class="feature-item">
+                    <h4>スマートフォン操作</h4>
                 </div>
-                <div class="feature-card">
-                    <span class="feature-icon">📋</span>
-                    <div class="feature-content">
-                        <h4>自動帳簿作成</h4>
-                        <p>現金出納帳、売掛金台帳、買掛金台帳を自動生成。税理士への提出もワンクリック。</p>
-                    </div>
+                <div class="feature-item">
+                    <h4>証票のAIOCR読取</h4>
                 </div>
-                <div class="feature-card">
-                    <span class="feature-icon">🏦</span>
-                    <div class="feature-content">
-                        <h4>銀行連携</h4>
-                        <p>主要銀行との自動連携で振込データを取得。現金と合わせて一元管理できます。</p>
-                    </div>
+                <div class="feature-item">
+                    <h4>現金出納帳管理</h4>
                 </div>
-                <div class="feature-card">
-                    <span class="feature-icon">🔄</span>
-                    <div class="feature-content">
-                        <h4>自動消込機能</h4>
-                        <p>請求書データと入金データの突合を自動化。月末処理の工数を大幅削減します。</p>
-                    </div>
+                <div class="feature-item">
+                    <h4>未入金管理</h4>
                 </div>
-                <div class="feature-card">
-                    <span class="feature-icon">📈</span>
-                    <div class="feature-content">
-                        <h4>リアルタイム分析</h4>
-                        <p>現金残高、入金状況、未収金をリアルタイムで可視化。経営判断を迅速化します。</p>
-                    </div>
+                <div class="feature-item">
+                    <h4>入金消込仕訳作成</h4>
                 </div>
-                <div class="feature-card">
-                    <span class="feature-icon">📱</span>
-                    <div class="feature-content">
-                        <h4>モバイル対応</h4>
-                        <p>外出先でもスマホから現金管理。営業車での集金もその場で記録できます。</p>
-                    </div>
+                <div class="feature-item">
+                    <h4><strong>自動照合・一括消込</strong></h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing">
+        <div class="container">
+            <h2>料金体系</h2>
+            <div class="pricing-card">
+                <h3>お客様のご状況に合わせて最適なプランをご提案いたします。</h3>
+                <div class="price">月額費用3万円〜</div>
+                <p>詳細な料金については、お気軽にお問い合わせください。</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="support">
+        <div class="container">
+            <h2>導入後のサービス運用定着を支援します</h2>
+            <div class="support-grid">
+                <div class="support-card">
+                    <h4>初心者の方でもご安心ください</h4>
+                    <p>システムを使い慣れていない方のために、豊富なマニュアルやサポートをご用意しています。</p>
+                </div>
+                <div class="support-card">
+                    <h4>導入支援サービス（有償）</h4>
+                    <p>導入から運用開始までに必要な設定を専任の担当者がサポートします。全社展開前のテスト運用、社内周知から運用開始まで伴走することで、安心してご利用いただけます。</p>
                 </div>
             </div>
         </div>
@@ -501,8 +582,9 @@
 
     <section class="contact" id="contact">
         <div class="container">
-            <h2>お問い合わせ</h2>
-            <p>CashFlow Managerについてご不明点がございましたら、お気軽にお問い合わせください。</p>
+            <h2>資料ダウンロード</h2>
+            <p>煩雑な経理業務は入金管理クラウドで解決。<br>
+            正しくお金を管理できる環境へ。</p>
             
             <form class="contact-form" id="contactForm" name="contact" netlify netlify-honeypot="bot-field">
                 <input type="hidden" name="form-name" value="contact" />
@@ -513,7 +595,7 @@
                     <h3>送信完了！</h3>
                     <p>お問い合わせありがとうございます！<br>
                     担当者より3営業日以内にご連絡いたします。<br>
-                    CashFlow Managerで現金管理を革新しましょう！</p>
+                    入金管理クラウドで経理業務を効率化しましょう！</p>
                 </div>
                 
                 <div id="errorMessage" class="error-message">
@@ -522,18 +604,18 @@
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="company">会社名・事業所名</label>
+                        <label for="company">会社名 *</label>
                         <input type="text" id="company" name="company" required>
                     </div>
                     <div class="form-group">
-                        <label for="name">お名前</label>
+                        <label for="name">お名前 *</label>
                         <input type="text" id="name" name="name" required>
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="email">メールアドレス</label>
+                        <label for="email">メールアドレス *</label>
                         <input type="email" id="email" name="email" required>
                     </div>
                     <div class="form-group">
@@ -546,24 +628,35 @@
                     <label for="business_type">業種</label>
                     <select id="business_type" name="business_type">
                         <option value="">選択してください</option>
-                        <option value="介護施設">介護施設</option>
-                        <option value="訪問介護">訪問介護</option>
-                        <option value="デイサービス">デイサービス</option>
-                        <option value="障害福祉">障害福祉</option>
-                        <option value="葬儀業">葬儀業</option>
+                        <option value="製造業">製造業</option>
                         <option value="建設業">建設業</option>
-                        <option value="不動産業">不動産業</option>
+                        <option value="小売業">小売業</option>
+                        <option value="卸売業">卸売業</option>
+                        <option value="サービス業">サービス業</option>
+                        <option value="医療・福祉">医療・福祉</option>
+                        <option value="教育">教育</option>
                         <option value="その他">その他</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="inquiry_type">お問い合わせ内容</label>
-                    <select id="inquiry_type" name="inquiry_type">
+                    <label for="employees">従業員数</label>
+                    <select id="employees" name="employees">
                         <option value="">選択してください</option>
-                        <option value="ベータ版案内希望">ベータ版優先案内希望</option>
+                        <option value="10名未満">10名未満</option>
+                        <option value="10-50名">10-50名</option>
+                        <option value="50-100名">50-100名</option>
+                        <option value="100-300名">100-300名</option>
+                        <option value="300名以上">300名以上</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="inquiry_type">お問い合わせ内容 *</label>
+                    <select id="inquiry_type" name="inquiry_type" required>
+                        <option value="">選択してください</option>
+                        <option value="資料請求">資料請求</option>
                         <option value="デモ希望">デモンストレーション希望</option>
-                        <option value="資料請求">詳細資料請求</option>
                         <option value="価格相談">価格・プラン相談</option>
                         <option value="導入相談">導入相談</option>
                         <option value="その他">その他</option>
@@ -571,12 +664,12 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="message">具体的なご相談内容</label>
-                    <textarea id="message" name="message" placeholder="現在の現金管理の課題や、ご質問などをお聞かせください"></textarea>
+                    <label for="message">現在の入金管理の課題・ご質問</label>
+                    <textarea id="message" name="message" placeholder="例：現金と振込の管理がバラバラ、未入金の把握ができていない、消込作業に時間がかかる など"></textarea>
                 </div>
 
                 <button type="submit" class="submit-btn" id="submitBtn">
-                    お問い合わせする
+                    資料をダウンロード
                 </button>
             </form>
         </div>
@@ -584,7 +677,7 @@
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 CashFlow Manager. All rights reserved.</p>
+            <p>&copy; 2024 入金管理クラウド. All rights reserved.</p>
         </div>
     </footer>
 
@@ -622,7 +715,7 @@
             })
             .finally(() => {
                 submitBtn.disabled = false;
-                submitBtn.textContent = 'お問い合わせする';
+                submitBtn.textContent = '資料をダウンロード';
             });
         });
 
