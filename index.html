@@ -94,6 +94,13 @@
             animation: slideInUp 1s ease-out 0.3s both;
         }
 
+        .hero .subtitle {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            animation: slideInUp 1s ease-out 0.4s both;
+        }
+
         .cta-button {
             display: inline-block;
             background: linear-gradient(45deg, #ff6b6b, #ee5a24);
@@ -282,13 +289,13 @@
             background: #f8f9fa;
             padding: 30px;
             border-radius: 12px;
-            text-align: center;
         }
 
         .support-card h4 {
             font-size: 1.5rem;
             color: #2c3e50;
             margin-bottom: 15px;
+            font-weight: bold;
         }
 
         .contact {
@@ -337,17 +344,11 @@
             background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
         }
 
-        /* Googleフォーム内部のスタイルをカスタマイズ */
         .form-container iframe {
             border: none;
             width: 100%;
             background: transparent;
             border-radius: 15px;
-        }
-
-        /* カスタムフォームスタイル（iframe内部に適用される） */
-        .custom-form-styles {
-            display: none;
         }
 
         .footer {
@@ -388,8 +389,120 @@
     </style>
 </head>
 <body>
-    <!-- 既存のセクションは省略... -->
-    
+    <section class="hero">
+        <div class="container">
+            <h1>入金管理クラウド</h1>
+            <h2>現金も振り込みもまとめて管理</h2>
+            <p><strong>現金出納から銀行取引まで自動で整理。</strong></p>
+            <p class="subtitle">今の未入金や残高まで正しく把握できます。</p>
+            <a href="#contact" class="cta-button">資料ダウンロード</a>
+        </div>
+    </section>
+
+    <section class="problems">
+        <div class="container">
+            <h2>こんなお悩みはありませんか？</h2>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <span class="problem-icon">📊</span>
+                    <h3>入金情報を1つの台帳に集約できない</h3>
+                    <p>特に現金発生時は複数帳簿への記入が必要なため、作業や転記ミス・記帳漏れが発生する恐れがある。</p>
+                </div>
+                <div class="problem-card">
+                    <span class="problem-icon">⏰</span>
+                    <h3>属人的な消し込み業務の負荷</h3>
+                    <p>請求と入金情報の突合に時間がかかり、かつ業務が属人的となっている。</p>
+                </div>
+                <div class="problem-card">
+                    <span class="problem-icon">❓</span>
+                    <h3>未入金を正しく管理できていない</h3>
+                    <p>未入金をすぐに確認できない。結果、督促が必要な顧客などがわからない。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="solutions">
+        <div class="container">
+            <h2>入金管理クラウドはこれらの課題を全て解決します</h2>
+            <div class="solution-grid">
+                <div class="solution-card">
+                    <span class="solution-icon">📱</span>
+                    <div class="solution-content">
+                        <h4>現金の入出金をスマートフォンで簡単登録</h4>
+                        <p>出金時に受け取る領収書はAI OCRで読み取り。</p>
+                    </div>
+                </div>
+                <div class="solution-card">
+                    <span class="solution-icon">🔄</span>
+                    <div class="solution-content">
+                        <h4>入金情報を一元管理</h4>
+                        <p>現金も銀行振り込みなどの分散した情報をまとめて管理。</p>
+                    </div>
+                </div>
+                <div class="solution-card">
+                    <span class="solution-icon">⚡</span>
+                    <div class="solution-content">
+                        <h4>入金消込・仕訳を自動化</h4>
+                        <p>入金と請求情報を自動突合。仕訳を生成することで会計システムとの連携をスムーズに。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2>機能</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h4>スマートフォン操作</h4>
+                </div>
+                <div class="feature-item">
+                    <h4>証票のAIOCR読取</h4>
+                </div>
+                <div class="feature-item">
+                    <h4>現金出納帳管理</h4>
+                </div>
+                <div class="feature-item">
+                    <h4>未入金管理</h4>
+                </div>
+                <div class="feature-item">
+                    <h4>入金消込仕訳作成</h4>
+                </div>
+                <div class="feature-item">
+                    <h4><strong>自動照合・一括消込</strong></h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing">
+        <div class="container">
+            <h2>料金体系</h2>
+            <div class="pricing-card">
+                <h3><strong>お客様のご状況に合わせて最適なプランをご提案いたします。</strong></h3>
+                <div class="price"><strong>月額費用3万円〜</strong></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="support">
+        <div class="container">
+            <h2>導入後のサービス運用定着を支援します</h2>
+            <div class="support-grid">
+                <div class="support-card">
+                    <h4>初心者の方でもご安心ください</h4>
+                    <p>システムを使い慣れていない方のために、豊富なマニュアルやサポートをご用意しています。</p>
+                </div>
+                <div class="support-card">
+                    <h4>導入支援サービス（有償）</h4>
+                    <p>導入から運用開始までに必要な設定を専任の担当者がサポートします。全社展開前のテスト運用、社内周知から運用開始まで伴走することで、安心してご利用いただけます。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="contact" id="contact">
         <div class="container">
             <h2>資料ダウンロード</h2>
@@ -398,9 +511,7 @@
             
             <div class="form-wrapper">
                 <div class="form-container">
-                    <!-- カスタマイズされたiframe -->
-                    <iframe id="customForm" 
-                            src="https://docs.google.com/forms/d/e/1FAIpQLSeXprrdKfgPmiu9A8XGzf4C0NGoFxv7Fc3x_Xezb-Q6UapITA/viewform?embedded=true&usp=pp_url&theme=purple" 
+                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeXprrdKfgPmiu9A8XGzf4C0NGoFxv7Fc3x_Xezb-Q6UapITA/viewform?embedded=true" 
                             width="100%" 
                             height="976" 
                             frameborder="0" 
@@ -420,119 +531,7 @@
     </footer>
 
     <script>
-        // Googleフォームのスタイルをカスタマイズ
-        document.addEventListener('DOMContentLoaded', function() {
-            const iframe = document.getElementById('customForm');
-            
-            iframe.onload = function() {
-                try {
-                    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-                    
-                    // カスタムスタイルを注入
-                    const style = iframeDoc.createElement('style');
-                    style.textContent = `
-                        /* Googleフォームのカスタムスタイル */
-                        .freebirdFormviewerViewFormCard {
-                            background: transparent !important;
-                            box-shadow: none !important;
-                            border: none !important;
-                        }
-                        
-                        .freebirdFormviewerViewHeaderHeader {
-                            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
-                            color: white !important;
-                            padding: 30px !important;
-                            border-radius: 15px 15px 0 0 !important;
-                        }
-                        
-                        .freebirdFormviewerViewHeaderTitle {
-                            color: white !important;
-                            font-size: 1.8rem !important;
-                            font-weight: 600 !important;
-                        }
-                        
-                        .freebirdFormviewerViewHeaderDescription {
-                            color: rgba(255,255,255,0.9) !important;
-                        }
-                        
-                        .freebirdFormviewerViewItemList {
-                            background: white !important;
-                            padding: 30px !important;
-                            border-radius: 0 0 15px 15px !important;
-                        }
-                        
-                        .freebirdFormviewerComponentsQuestionBaseRoot {
-                            border: none !important;
-                            border-radius: 12px !important;
-                            background: #f8f9fa !important;
-                            margin-bottom: 20px !important;
-                            padding: 20px !important;
-                            box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
-                        }
-                        
-                        .freebirdFormviewerComponentsQuestionBaseTitle {
-                            color: #2c3e50 !important;
-                            font-weight: 600 !important;
-                            margin-bottom: 10px !important;
-                        }
-                        
-                        .quantumWizTextinputPaperinputInput {
-                            border: 2px solid #e1e8ed !important;
-                            border-radius: 8px !important;
-                            padding: 12px 15px !important;
-                            font-size: 16px !important;
-                            transition: all 0.3s ease !important;
-                        }
-                        
-                        .quantumWizTextinputPaperinputInput:focus {
-                            border-color: #667eea !important;
-                            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
-                        }
-                        
-                        .freebirdFormviewerComponentsQuestionTextRoot textarea {
-                            border: 2px solid #e1e8ed !important;
-                            border-radius: 8px !important;
-                            padding: 12px 15px !important;
-                            font-size: 16px !important;
-                            transition: all 0.3s ease !important;
-                        }
-                        
-                        .freebirdFormviewerComponentsQuestionTextRoot textarea:focus {
-                            border-color: #667eea !important;
-                            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
-                        }
-                        
-                        .freebirdFormviewerViewNavigationSubmitButton {
-                            background: linear-gradient(45deg, #667eea, #764ba2) !important;
-                            color: white !important;
-                            border: none !important;
-                            padding: 15px 40px !important;
-                            border-radius: 25px !important;
-                            font-size: 1.1rem !important;
-                            font-weight: 600 !important;
-                            cursor: pointer !important;
-                            transition: all 0.3s ease !important;
-                        }
-                        
-                        .freebirdFormviewerViewNavigationSubmitButton:hover {
-                            transform: translateY(-2px) !important;
-                            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3) !important;
-                        }
-                        
-                        .freebirdFormviewerViewNavigationNoSubmitButton {
-                            color: #667eea !important;
-                            text-decoration: none !important;
-                        }
-                    `;
-                    
-                    iframeDoc.head.appendChild(style);
-                } catch (e) {
-                    console.log('Cross-origin restrictions prevent iframe styling');
-                }
-            };
-        });
-
-        // Smooth scrolling
+        // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
