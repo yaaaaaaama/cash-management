@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QVY0P82JKG"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX');
+      gtag('config', 'G-QVY0P82JKG');
     </script>
     
     <title>入金管理クラウド - 現金も振り込みもまとめて管理</title>
@@ -302,7 +302,6 @@
             padding: 80px 0;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            position: relative;
         }
 
         .contact h2 {
@@ -318,37 +317,86 @@
             opacity: 0.9;
         }
 
-        .form-wrapper {
-            max-width: 800px;
+        .contact-form {
+            max-width: 600px;
             margin: 0 auto;
-        }
-
-        .form-container {
-            background: rgba(255,255,255,0.98);
+            background: rgba(255,255,255,0.1);
             padding: 40px;
-            border-radius: 20px;
-            backdrop-filter: blur(15px);
-            border: 2px solid rgba(255,255,255,0.3);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-            position: relative;
-            overflow: hidden;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
         }
 
-        .form-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 6px;
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+        .form-group {
+            margin-bottom: 25px;
         }
 
-        .form-container iframe {
-            border: none;
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: white;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
             width: 100%;
-            background: transparent;
-            border-radius: 15px;
+            padding: 12px 15px;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 8px;
+            font-size: 16px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: rgba(255,255,255,0.6);
+            background: rgba(255,255,255,0.15);
+            box-shadow: 0 0 0 3px rgba(255,255,255,0.1);
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(238, 90, 36, 0.3);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
         }
 
         .footer {
@@ -381,14 +429,56 @@
                 grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             }
 
-            .form-container {
-                margin: 0 20px;
-                padding: 25px;
+            .form-row {
+                grid-template-columns: 1fr;
             }
+
+            .contact-form {
+                margin: 0 20px;
+                padding: 30px 20px;
+            }
+        }
+
+        .success-message {
+            display: none;
+            background: rgba(40, 167, 69, 0.9);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .error-message {
+            display: none;
+            background: rgba(220, 53, 69, 0.9);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
         }
     </style>
 </head>
 <body>
+    <!-- 隠しフォーム（Netlify Forms用） -->
+    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+        <input type="text" name="company" />
+        <input type="text" name="name" />
+        <input type="email" name="email" />
+        <input type="tel" name="phone" />
+        <select name="business_type">
+            <option value="製造業">製造業</option>
+        </select>
+        <select name="employees">
+            <option value="10名未満">10名未満</option>
+        </select>
+        <select name="inquiry_type">
+            <option value="資料請求">資料請求</option>
+        </select>
+        <textarea name="message"></textarea>
+    </form>
+
     <section class="hero">
         <div class="container">
             <h1>入金管理クラウド</h1>
@@ -509,18 +599,89 @@
             <p>煩雑な経理業務は入金管理クラウドで解決。<br>
             正しくお金を管理できる環境へ。</p>
             
-            <div class="form-wrapper">
-                <div class="form-container">
-                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeXprrdKfgPmiu9A8XGzf4C0NGoFxv7Fc3x_Xezb-Q6UapITA/viewform?embedded=true" 
-                            width="100%" 
-                            height="976" 
-                            frameborder="0" 
-                            marginheight="0" 
-                            marginwidth="0">
-                        読み込んでいます…
-                    </iframe>
+            <form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                <input type="hidden" name="form-name" value="contact" />
+                <input type="hidden" name="bot-field" />
+
+                <div id="successMessage" class="success-message">
+                    お問い合わせありがとうございます！<br>
+                    担当者より3営業日以内にご連絡いたします。
                 </div>
-            </div>
+                
+                <div id="errorMessage" class="error-message">
+                    送信中にエラーが発生しました。お手数ですが再度お試しください。
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="company">会社名 *</label>
+                        <input type="text" id="company" name="company" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">お名前 *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">メールアドレス *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">電話番号</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="business_type">業種</label>
+                    <select id="business_type" name="business_type">
+                        <option value="">選択してください</option>
+                        <option value="製造業">製造業</option>
+                        <option value="建設業">建設業</option>
+                        <option value="小売業">小売業</option>
+                        <option value="卸売業">卸売業</option>
+                        <option value="サービス業">サービス業</option>
+                        <option value="医療・福祉">医療・福祉</option>
+                        <option value="教育">教育</option>
+                        <option value="その他">その他</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="employees">従業員数</label>
+                    <select id="employees" name="employees">
+                        <option value="">選択してください</option>
+                        <option value="10名未満">10名未満</option>
+                        <option value="10-50名">10-50名</option>
+                        <option value="50-100名">50-100名</option>
+                        <option value="100-300名">100-300名</option>
+                        <option value="300名以上">300名以上</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="inquiry_type">お問い合わせ内容 *</label>
+                    <select id="inquiry_type" name="inquiry_type" required>
+                        <option value="">選択してください</option>
+                        <option value="資料請求">資料請求</option>
+                        <option value="デモ希望">デモンストレーション希望</option>
+                        <option value="価格相談">価格・プラン相談</option>
+                        <option value="導入相談">導入相談</option>
+                        <option value="その他">その他</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">現在の入金管理の課題・ご質問</label>
+                    <textarea id="message" name="message" placeholder="例：現金と振込の管理がバラバラ、未入金の把握ができていない、消込作業に時間がかかる など"></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    資料をダウンロード
+                </button>
+            </form>
         </div>
     </section>
 
@@ -531,7 +692,43 @@
     </footer>
 
     <script>
-        // Smooth scrolling for anchor links
+        // Netlifyフォーム送信処理
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.querySelector('.submit-btn');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'none';
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = '送信中...';
+            
+            const formData = new FormData(this);
+            
+            fetch('/', {
+                method: 'POST',
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: new URLSearchParams(formData).toString()
+            })
+            .then(() => {
+                successMessage.style.display = 'block';
+                this.reset();
+                successMessage.scrollIntoView({ behavior: 'smooth' });
+            })
+            .catch(() => {
+                errorMessage.style.display = 'block';
+                errorMessage.scrollIntoView({ behavior: 'smooth' });
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.textContent = '資料をダウンロード';
+            });
+        });
+
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
