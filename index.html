@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QVY0P82JKG"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-QVY0P82JKG');
+      gtag('config', 'G-XXXXXXXXXX');
     </script>
     
     <title>入金管理クラウド - 現金も振り込みもまとめて管理</title>
@@ -291,16 +291,41 @@
             margin-bottom: 15px;
         }
 
+        /* グラデーション版フォームスタイル */
         .contact {
             padding: 80px 0;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
+            position: relative;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, 
+                rgba(102, 126, 234, 0.1) 0%, 
+                rgba(118, 75, 162, 0.1) 50%,
+                rgba(102, 126, 234, 0.1) 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .contact h2 {
             text-align: center;
             font-size: 2.5rem;
             margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
         }
 
         .contact p {
@@ -308,34 +333,84 @@
             font-size: 1.1rem;
             margin-bottom: 50px;
             opacity: 0.9;
+            position: relative;
+            z-index: 2;
         }
 
-        /* Googleフォーム カスタムスタイル */
-        .form-container {
-            max-width: 600px;
+        .form-wrapper {
+            max-width: 800px;
             margin: 0 auto;
-            background: rgba(255,255,255,0.1);
-            padding: 20px;
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .form-header p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.1rem;
+        }
+
+        .form-container {
+            background: rgba(255,255,255,0.95);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255,255,255,0.3);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #667eea 100%);
+            background-size: 200% 100%;
+            animation: gradientMove 3s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 0%; }
+            100% { background-position: 0% 0%; }
+        }
+
+        .form-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, 
+                rgba(102, 126, 234, 0.05) 0%, 
+                rgba(118, 75, 162, 0.05) 100%);
+            pointer-events: none;
+            border-radius: 20px;
         }
 
         .form-container iframe {
             border: none;
             width: 100%;
             background: transparent;
-        }
-
-        /* Googleフォームのスタイルを上書き */
-        .form-container::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            pointer-events: none;
+            border-radius: 15px;
+            position: relative;
+            z-index: 1;
         }
 
         .footer {
@@ -370,7 +445,11 @@
 
             .form-container {
                 margin: 0 20px;
-                padding: 15px;
+                padding: 25px;
+            }
+            
+            .form-container iframe {
+                height: 800px;
             }
         }
     </style>
@@ -497,9 +576,22 @@
             <p>煩雑な経理業務は入金管理クラウドで解決。<br>
             正しくお金を管理できる環境へ。</p>
             
-            <!-- Googleフォーム埋め込み -->
-            <div class="form-container">
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeXprrdKfgPmiu9A8XGzf4C0NGoFxv7Fc3x_Xezb-Q6UapITA/viewform?embedded=true" width="640" height="976" frameborder="0" marginheight="0" marginwidth="0">読み込んでいます…</iframe>
+            <div class="form-wrapper">
+                <div class="form-header">
+                    <h3>お問い合わせフォーム</h3>
+                    <p>以下のフォームにご入力ください</p>
+                </div>
+                
+                <div class="form-container">
+                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeXprrdKfgPmiu9A8XGzf4C0NGoFxv7Fc3x_Xezb-Q6UapITA/viewform?embedded=true" 
+                            width="100%" 
+                            height="976" 
+                            frameborder="0" 
+                            marginheight="0" 
+                            marginwidth="0">
+                        読み込んでいます…
+                    </iframe>
+                </div>
             </div>
         </div>
     </section>
