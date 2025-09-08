@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CashFlow Manager - システムモックアップ</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        .sidebar {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        .sidebar.active {
+            transform: translateX(0);
+        }
+        .overlay {
+            display: none;
+        }
+        .overlay.active {
+            display: block;
+        }
+        @media (min-width: 768px) {
+            .sidebar {
+                transform: translateX(0);
+            }
+            .hamburger {
+                display: none;
+            }
+        }
+        .screen {
+            display: none;
+        }
+        .screen.active {
+            display: block;
+        }
+        .cash-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: all 0.3s ease;
+        }
+        .cash-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        .income-button {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        .expense-button {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+        .camera-button {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            border: 2px dashed #9ca3af;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b">
+        <div class="flex items-center justify-between px-4 py-3">
+            <div class="flex items-center">
+                <button class="hamburger md:hidden mr-3 p-2" onclick="toggleSidebar()">
+                    <i class="fas fa-bars text-gray-600"></i>
+                </button>
+                <div class="flex items-center">
+                    <i class="fas fa-money-bill-wave text-blue-600 text-xl mr-2"></i>
+                    <h1 class="text-xl font-bold text-gray-800">CashFlow Manager</h1>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="hidden md:flex items-center text-sm text-gray-600">
+                    <i class="fas fa-user-circle mr-2"></i>
+                    <span>田中 太郎</span>
+                </div>
+                <button class="text-gray-600 hover:text-gray-800">
+                    <i class="fas fa-cog"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex">
+        <!-- Sidebar -->
+        <div class="sidebar fixed md:static inset-y-0 left-0 z-50 w-64 bg-white shadow-lg">
+            <nav class="mt-16 md:mt-0 p-4">
+                <ul class="space-y-2">
+                    <li>
+                        <a href="#" onclick="showScreen('cash-management')" class="flex items-center p-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                            <i class="fas fa-hand-holding-usd w-5 mr-3"></i>
+                            <span>現金管理</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="showScreen('cash-ledger')" class="flex items-center p-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                            <i class="fas fa-book w-5 mr-3"></i>
+                            <span>現金出納帳</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="showScreen('payment-management')" class="flex items-center p-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                            <i class="fas fa-download w-5 mr-3"></i>
+                            <span>入金管理</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="showScreen('invoice-management')" class="flex items-center p-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                            <i class="fas fa-file-invoice w-5 mr-3"></i>
+                            <span>請求管理</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="showScreen('reconciliation')" class="flex items-center p-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                            <i class="fas fa-balance-scale w-5 mr-3"></i>
+                            <span>入金消し込み</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="showScreen('customer-management')" class="flex items-center p-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                            <i class="fas fa-users w-5 mr-3"></i>
+                            <span>取引先管理</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="showScreen('journal-entry')" class="flex items-center p-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                            <i class="fas fa-calculator w-5 mr-3"></i>
+                            <span>仕訳</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Overlay for mobile -->
+        <div class="overlay fixed inset-0 bg-black bg-opacity-50 z-40" onclick="toggleSidebar()"></div>
+
+        <!-- Main Content -->
+        <div class="flex-1 md:ml-0">
+            <!-- 現金管理画面 -->
+            <div id="cash-management" class="screen active p-4">
+                <div class="max-w-md mx-auto">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">現金管理</h2>
+                    
+                    <!-- 現在残高 -->
+                    <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                        <div class="text-center">
+                            <p class="text-gray-600 text-sm mb-2">現在残高</p>
+                            <p class="text-3xl font-bold text-blue-600">¥2,847,350</p>
+                        </div>
+                    </div>
+
+                    <!-- 入金・出金ボタン -->
+                    <div class="space-y-4">
+                        <button onclick="showIncomeForm()" class="cash-button income-button w-full py-4 px-6 text-white font-bold rounded-lg text-lg shadow-lg">
+                            <i class="fas fa-plus-circle mr-2"></i>
+                            入金
+                        </button>
+                        
+                        <button onclick="showExpenseForm()" class="cash-button expense-button w-full py-4 px-6 text-white font-bold rounded-lg text-lg shadow-lg">
+                            <i class="fas fa-minus-circle mr-2"></i>
+                            出金
+                        </button>
+                    </div>
+
+                    <!-- 入金フォーム -->
+                    <div id="income-form" class="hidden mt-6 bg-white rounded-lg shadow-md p-6">
+                        <h3 class="text-lg font-bold text-gray-800 mb-4">入金登録</h3>
+                        <form>
+                            <div class="mb-4">
+                                <label class="block text-gray-700 text-sm font-bold mb-2">会社名</label>
+                                <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" placeholder="例：株式会社サンプル">
+                            </div>
+                            <div class="mb-4">
+                                <label class="block text-gray-700 text-sm font-bold mb-2">金額</label>
+                                <input type="number" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" placeholder="例：100000">
+                            </div>
+                            <div class="flex space-x-2">
+                                <button type="button" onclick="completeIncome()" class="flex-1 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700">
+                                    完了
+                                </button>
+                                <button type="button" onclick="cancelForm()" class="flex-1 bg-gray-400 text-white py-2 px-4 rounded-lg hover:bg-gray-500">
+                                    キャンセル
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- 出金フォーム -->
+                    <div id="expense-form" class="hidden mt-6 bg-white rounded-lg shadow-md p-6">
+                        <h3 class="text-lg font-bold text-gray-800 mb-4">出金登録</h3>
+                        <form>
+                            <div class="mb-4">
+                                <label class="block text-gray-700 text-sm font-bold mb-2">会社名</label>
+                                <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" placeholder="例：オフィス用品店">
+                            </div>
+                            <div class="mb-4">
+                                <label class="block text-gray-700 text-sm font-bold mb-2">金額</label>
+                                <input type="number" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" placeholder="例：50000">
+                            </div>
+                            <div class="mb-4">
+                                <label class="block text-gray-700 text-sm font-bold mb-2">領収書（任意）</label>
+                                <button type="button" class="camera-button w-full py-8 px-4 text-gray-600 rounded-lg text-center">
+                                    <i class="fas fa-camera text-2xl mb-2"></i>
+                                    <p>タップして領収書を撮影</p>
+                                    <p class="text-sm">AI OCRで自動読み取り</p>
+                                </button>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button type="button" onclick="completeExpense()" class="flex-1 bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700">
+                                    完了
+                                </button>
+                                <button type="button" onclick="cancelForm()" class="flex-1 bg-gray-400 text-white py-2 px-4 rounded-lg hover:bg-gray-500">
+                                    キャンセル
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 現金出納帳画面 -->
+            <div id="cash-ledger" class="screen p-4">
+                <div class="bg-white rounded-lg shadow-md">
+                    <div class="p-6 border-b">
+                        <h2 class="text-2xl font-bold text-gray-800">現金出納帳</h2>
+                        <div class="flex flex-wrap gap-4 mt-4">
+                            <input type="date" class="px-3 py-2 border border-gray-300 rounded-lg">
+                            <input type="text" placeholder="検索..." class="px-3 py-2 border border-gray-300 rounded-lg">
+                            <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                                <i class="fas fa-search mr-2"></i>検索
+                            </button>
+                        </div>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">日付</th>
+                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">摘要</th>
+                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">勘定科目</th>
+                                    <th class="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase">入金</th>
+                                    <th class="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase">出金</th>
+                                    <th class="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase">残高</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                <tr>
+                                    <td class="px-4 py-3 text-sm">2024/01/15</td>
+                                    <td class="px-4 py-3 text-sm">A商事入金</td>
+                                    <td class="px-4 py-3 text-sm text-blue-600">売上高</td>
+                                    <td class="px-4 py-3 text-sm text-right text-blue-600">¥100,000</td>
+                                    <td class="px-4 py-3 text-sm text-right">-</td>
+                                    <td class="px-4 py-3 text-sm text-right font-medium">¥2,947,350</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-3 text-sm">2024/01/15</td>
+                                    <td class="px-4 py-3 text-sm">交通費支払い</td>
+                                    <td class="px-4 py-3 text-sm text-red-600">交通費</td>
+                                    <td class="px-4 py-3 text-sm text-right">-</td>
+                                    <td class="px-4 py-3 text-sm text-right text-red-600">¥3,000</td>
+                                    <td class="px-4 py-3 text-sm text-right font-medium">¥2,944,350</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-3 text-sm">2024/01/14</td>
+                                    <td class="px-4 py-3 text-sm">B社入金</td>
+                                    <td class="px-4 py-3 text-sm text-blue-600">売上高</td>
+                                    <td class="px-4 py-3 text-sm text-right text-blue-600">¥75,000</td>
+                                    <td class="px-4 py-3 text-sm text-right">-</td>
+                                    <td class="px-4 py-3 text-sm text-right font-medium">¥2,947,350</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-3 text-sm">2024/01/14</td>
+                                    <td class="px-4 py-3 text-sm">消耗品購入</td>
+                                    <td class="px-4 py-3 text-sm text-red-600">消耗品費</td>
+                                    <td class="px-4 py-3 text-sm text-right">-</td>
+                                    <td class="px-4 py-3 text-sm text-right text-red-600">¥25,000</td>
+                                    <td class="px-4 py-3 text-sm text-right font-medium">¥2,872,350</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-3 text-sm">2024/01/13</td>
+                                    <td class="px-4 py-3 text-sm">C社入金</td>
+                                    <td class="px-4 py-3 text-sm text-blue-600">売上高</td>
+                                    <td class="px-4 py-3 text-sm text-right text-blue-600">¥200,000</td>
+                                    <td class="px-4 py-3 text-sm text-right">-</td>
+                                    <td class="px-4 py-3 text-sm text-right font-medium">¥2,897,350</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 入金管理画面 -->
+            <div id="payment-management" class="screen p-4">
+                <div class="bg-white rounded-lg shadow-md">
+                    <div class="p-6 border-b">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4">入金管理</h2>
+                        <div class="flex flex-wrap gap-4">
+                            <input type="file" accept=".csv" class="hidden" id="csv-upload">
+                            <button onclick="document.getElementById('csv-upload').click()" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">
+                                <i class="fas fa-upload mr-2"></i>銀行CSV取り込み
+                            </button>
+                            <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                                <i class="fas fa-sync mr-2"></i>更新
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4">取り込み履歴</h3>
+                        <div class="space-y-4">
+                            <div class="border border-gray-200 rounded-lg p-4">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <p class="font-medium text-gray-800">2024/01/15 取り込み</p>
+                                        <p class="text-sm text-gray-600">5件のデータを取り込みました</p>
+                                    </div>
+                                    <button onclick="toggleDetails('details-1')" class="bg-blue-100 text-blue-600 px-3 py-1 rounded text-sm hover:bg-blue-200">
+                                        詳細
+                                    </button>
+                                </div>
+                                <div id="details-1" class="hidden mt-4 bg-gray-50 rounded p-3">
+                                    <div class="text-sm space-y-2">
+                                        <div class="flex justify-between">
+                                            <span>A商事</span>
+                                            <span class="text-blue-600">¥100,000</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span>B社</span>
+                                            <span class="text-blue-600">¥75,000</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span>C社</span>
+                                            <span class="text-blue-600">¥200,000</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="border border-gray-200 rounded-lg p-4">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <p class="font-medium text-gray-800">2024/01/10 取り込み</p>
+                                        <p class="text-sm text-gray-600">3件のデータを取り込みました</p>
+                                    </div>
+                                    <button onclick="toggleDetails('details-2')" class="bg-blue-100 text-blue-600 px-3 py-1 rounded text-sm hover:bg-blue-200">
+                                        詳細
+                                    </button>
+                                </div>
+                                <div id="details-2" class="hidden mt-4 bg-gray-50 rounded p-3">
+                                    <div class="text-sm space-y-2">
+                                        <div class="flex justify-between">
+                                            <span>D社</span>
+                                            <span class="text-blue-600">¥150,000</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span>E社</span>
+                                            <span class="text-blue-600">¥80,000</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 請求管理画面 -->
+            <div id="invoice-management" class="screen p-4">
+                <div class="bg-white rounded-lg shadow-md">
+                    <div class="p-6 border-b">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4">請求管理</h2>
+                        <div class="flex flex-wrap gap-4">
+                            <button class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700">
+                                <i class="fas fa-file-import mr-2"></i>販売管理システム連携
+                            </button>
+                            <button class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">
+                                <i class="fas fa-plus mr-2"></i>新規請求書
+                            </button>
+                        </div>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">請求書番号</th>
+                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">取引先</th>
+                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">請求日</th>
+                                    <th class="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase">請求金額</th>
+                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">ステータス</th>
+                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                <tr>
+                                    <td class="px-4 py-3 text-sm font-medium">INV-2024-001</td>
+                                    <td class="px-4 py-3 text-sm">A商事</td>
+                                    <td class="px-4 py-3 text-sm">2024/01/01</td>
+                                    <td class="px-4 py-3 text-sm text-right">¥100,000</td>
+                                    <td class="px-4 py-3">
+                                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">完了</span>
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <button class="text-blue-600 hover:text-blue-800 text-sm">詳細</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-3 text-sm font-medium">INV-2024-002</td>
+                                    <td class="px-4 py-3 text-sm">B社</td>
+                                    <td class="px-4 py-3 text-sm">2024/01/05</td>
+                                    <td class="px-4 py-3 text-sm text-right">¥75,000</td>
+                                    <td class="px-4 py-3">
+                                        <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">一部入金</span>
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <button class="text-blue-600 hover:text-blue-800 text-sm">詳細</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-3 text-sm font-medium">INV-2024-003</td>
+                                    <td class="px-4 py-3 text-sm">C社</td>
+                                    <td class="px-4 py-3 text-sm">2024/01/10</td>
+                                    <td class="px-4 py-3 text-sm text-right">¥200,000</td>
+                                    <td class="px-4 py-3">
+                                        <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded-full">未入金</span>
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <button class="text-blue-600 hover:text-blue-800 text-sm">詳細</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 入金消し込み管理画面 -->
+            <div id="reconciliation" class="screen p-4">
+                <div class="bg-white rounded-lg shadow-md">
+                    <div class="p-6 border-b">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4">入金消し込み管理</h2>
+                        <div class="flex flex-wrap gap-4">
+                            <button class="bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700">
+                                <i class="fas fa-magic mr-2"></i>自動突合実行
+                            </button>
+                            <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                                <i class="fas fa-check mr-2"></i>手動消し込み
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <!-- 未突合の請求 -->
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-800 mb-4">未突合の請求</h3>
+                                <div class="space-y-3">
+                                    <div class="border border-gray-200 rounded-lg p-3">
+                                        <div class="flex justify-between items-center">
+                                            <div>
+                                                <p class="font-medium">A商事</p>
+                                                <p class="text-sm text-gray-600">INV-2024-004</p>
+                                            </div>
+                                            <p class="text-lg font-bold text-red-600">¥120,000</p>
+                                        </div>
+                                    </div>
+                                    <div class="border border-gray-200 rounded-lg p-3">
+                                        <div class="flex justify-between items-center">
+                                            <div>
+                                                <p class="font-medium">D社</p>
+                                                <p class="text-sm text-gray-600">INV-2024-005</p>
+                                            </div>
+                                            <p class="text-lg font-bold text-red-600">¥85,000</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 未突合の入金 -->
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-800 mb-4">未突合の入金</h3>
+                                <div class="space-y-3">
+                                    <div class="border border-gray-200 rounded-lg p-3">
+                                        <div class="flex justify-between items-center">
+                                            <div>
+                                                <p class="font-medium">エー商事（名義人）</p>
+                                                <p class="text-sm text-gray-600">2024/01/15</p>
+                                            </div>
+                                            <p class="text-lg font-bold text-blue-600">¥118,000</p>
+                                        </div>
+                                    </div>
+                                    <div class="border border-gray-200 rounded-lg p-3">
+                                        <div class="flex justify-between items-center">
+                                            <div>
+                                                <p class="font-medium">D商事（名義人）</p>
+                                                <p class="text-sm text-gray-600">2024/01/14</p>
+                                            </div>
+                                            <p class="text-lg font-bold text-blue-600">¥85,000</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 差額処理設定 -->
+                        <div class="mt-8 border-t pt-6">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-4">差額処理設定</h3>
+                            <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <p class="font-medium text-yellow-800">A商事の差額: ¥2,000</p>
+                                        <p class="text-sm text-yellow-700">請求額¥120,000 - 入金額¥118,000</p>
+                                    </div>
+                                    <div class="flex gap-2">
+                                        <select class="px-3 py-1 border border-gray-300 rounded text-sm">
+                                            <option>振込手数料</option>
+                                            <option>割引</option>
+                                            <option>その他</option>
+                                        </select>
+                                        <button class="bg-green-600 text-white px-3 py-1 rounded text-sm hover:bg-green-700">
+                                            処理
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 取引先管理画面 -->
+            <div id="customer-management" class="screen p-4">
+                <div class="bg-white rounded-lg shadow-md">
+                    <div class="p-6 border-b">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4">取引先管理</h2>
+                        <div class="flex flex-wrap gap-4">
+                            <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                                <i class="fas fa-plus mr-2"></i>個別登録
+                            </button>
+                            <button class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">
+                                <i class="fas fa-file-csv mr-2"></i>CSV一括登録
+                            </button>
+                            <input type="text" placeholder="検索..." class="px-3 py-2 border border-gray-300 rounded-lg">
+                        </div>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">会社名</th>
+                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">名義人</th>
+                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">連絡先</th>
+                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">登録日</th>
+                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                <tr>
+                                    <td class="px-4 py-3 text-sm font-medium">A商事</td>
+                                    <td class="px-4 py-3 text-sm">エー商事</td>
+                                    <td class="px-4 py-3 text-sm">03-1234-5678</td>
+                                    <td class="px-4 py-3 text-sm">2024/01/01</td>
+                                    <td class="px-4 py-3">
+                                        <div class="flex gap-2">
+                                            <button class="text-blue-600 hover:text-blue-800 text-sm">編集</button>
+                                            <button class="text-red-600 hover:text-red-800 text-sm">削除</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-3 text-sm font-medium">B社</td>
+                                    <td class="px-4 py-3 text-sm">ビー商事</td>
+                                    <td class="px-4 py-3 text-sm">03-2345-6789</td>
+                                    <td class="px-4 py-3 text-sm">2024/01/02</td>
+                                    <td class="px-4 py-3">
+                                        <div class="flex gap-2">
+                                            <button class="text-blue-600 hover:text-blue-800 text-sm">編集</button>
+                                            <button class="text-red-600 hover:text-red-800 text-sm">削除</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-3 text-sm font-medium">C社</td>
+                                    <td class="px-4 py-3 text-sm">シー商事</td>
+                                    <td class="px-4 py-3 text-sm">03-3456-7890</td>
+                                    <td class="px-4 py-3 text-sm">2024/01/03</td>
+                                    <td class="px-4 py-3">
+                                        <div class="flex gap-2">
+                                            <button class="text-blue-600 hover:text-blue-800 text-sm">編集</button>
+                                            <button class="text-red-600 hover:text-red-800 text-sm">削除</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-3 text-sm font-medium">D社</td>
+                                    <td class="px-4 py-3 text-sm">D商事</td>
+                                    <td class="px-4 py-3 text-sm">03-4567-8901</td>
+                                    <td class="px-4 py-3 text-sm">2024/01/04</td>
+                                    <td class="px-4 py-3">
+                                        <div class="flex gap-2">
+                                            <button class="text-blue-600 hover:text-blue-800 text-sm">編集</button>
+                                            <button class="text-red-600 hover:text-red-800 text-sm">削除</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 仕訳画面 -->
+            <div id="journal-entry" class="screen p-4">
+                <div class="bg-white rounded-lg shadow-md">
+                    <div class="p-6 border-b">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4">仕訳</h2>
+                        <div class="flex flex-wrap gap-4">
+                            <button class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700">
+                                <i class="fas fa-cog mr-2"></i>仕訳設定
+                            </button>
+                            <button class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">
+                                <i class="fas fa-download mr-2"></i>CSV出力
+                            </button>
+                            <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                                <i class="fas fa-sync mr-2"></i>更新
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <!-- 仕訳設定パネル -->
+                        <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+                            <h3 class="text-lg font-semibold text-blue-800 mb-3">仕訳出力設定</h3>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">対象期間</label>
+                                    <div class="flex gap-2">
+                                        <input type="date" class="px-3 py-2 border border-gray-300 rounded-lg text-sm">
+                                        <span class="self-center text-gray-500">〜</span>
+                                        <input type="date" class="px-3 py-2 border border-gray-300 rounded-lg text-sm">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">出力形式</label>
+                                    <select class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm">
+                                        <option>弥生会計形式</option>
+                                        <option>freee形式</option>
+                                        <option>マネーフォワード形式</option>
+                                        <option>汎用CSV形式</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 仕訳データプレビュー -->
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800 mb-4">仕訳データプレビュー</h3>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-sm">
+                                    <thead class="bg-gray-50">
+                                        <tr>
+                                            <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">日付</th>
+                                            <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">借方科目</th>
+                                            <th class="px-3 py-2 text-right text-xs font-medium text-gray-500 uppercase">借方金額</th>
+                                            <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">貸方科目</th>
+                                            <th class="px-3 py-2 text-right text-xs font-medium text-gray-500 uppercase">貸方金額</th>
+                                            <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">摘要</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-gray-200">
+                                        <tr>
+                                            <td class="px-3 py-2">2024/01/15</td>
+                                            <td class="px-3 py-2">現金</td>
+                                            <td class="px-3 py-2 text-right">100,000</td>
+                                            <td class="px-3 py-2">売上高</td>
+                                            <td class="px-3 py-2 text-right">100,000</td>
+                                            <td class="px-3 py-2">A商事入金</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-3 py-2">2024/01/15</td>
+                                            <td class="px-3 py-2">交通費</td>
+                                            <td class="px-3 py-2 text-right">3,000</td>
+                                            <td class="px-3 py-2">現金</td>
+                                            <td class="px-3 py-2 text-right">3,000</td>
+                                            <td class="px-3 py-2">交通費支払い</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-3 py-2">2024/01/14</td>
+                                            <td class="px-3 py-2">現金</td>
+                                            <td class="px-3 py-2 text-right">75,000</td>
+                                            <td class="px-3 py-2">売上高</td>
+                                            <td class="px-3 py-2 text-right">75,000</td>
+                                            <td class="px-3 py-2">B社入金</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-3 py-2">2024/01/14</td>
+                                            <td class="px-3 py-2">消耗品費</td>
+                                            <td class="px-3 py-2 text-right">25,000</td>
+                                            <td class="px-3 py-2">現金</td>
+                                            <td class="px-3 py-2 text-right">25,000</td>
+                                            <td class="px-3 py-2">消耗品購入</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            const overlay = document.querySelector('.overlay');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        function showScreen(screenId) {
+            // Hide all screens
+            document.querySelectorAll('.screen').forEach(screen => {
+                screen.classList.remove('active');
+            });
+            
+            // Show selected screen
+            document.getElementById(screenId).classList.add('active');
+            
+            // Close sidebar on mobile
+            if (window.innerWidth < 768) {
+                toggleSidebar();
+            }
+        }
+
+        function showIncomeForm() {
+            document.getElementById('income-form').classList.remove('hidden');
+            document.getElementById('expense-form').classList.add('hidden');
+        }
+
+        function showExpenseForm() {
+            document.getElementById('expense-form').classList.remove('hidden');
+            document.getElementById('income-form').classList.add('hidden');
+        }
+
+        function cancelForm() {
+            document.getElementById('income-form').classList.add('hidden');
+            document.getElementById('expense-form').classList.add('hidden');
+        }
+
+        function completeIncome() {
+            alert('入金情報を登録しました。現金出納帳に反映されます。');
+            cancelForm();
+        }
+
+        function completeExpense() {
+            alert('出金情報を登録しました。現金出納帳に反映されます。');
+            cancelForm();
+        }
+
+        function toggleDetails(detailsId) {
+            const details = document.getElementById(detailsId);
+            details.classList.toggle('hidden');
+        }
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            const sidebar = document.querySelector('.sidebar');
+            const hamburger = document.querySelector('.hamburger');
+            const overlay = document.querySelector('.overlay');
+            
+            if (sidebar.classList.contains('active') && 
+                !sidebar.contains(event.target) && 
+                !hamburger.contains(event.target)) {
+                sidebar.classList.remove('active');
+                overlay.classList.remove('active');
+            }
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            showScreen('cash-management');
+        });
+    </script>
+</body>
+</html>
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDr%2F1pipOWewUSBKFOoBAVUasBMr6MICxy3GJjvqizjCNNV7h%2FQuj57tbx4oKwsdNDMxYj5ujJlm%2BsrrAyNCDXaQeN7jesyP%2F%2F03CsS4o%2FhLYmOTGbACEAXsboe4ZOwWffIepgI6SBUy17XgY4347AwAJt%2F2Y1VIuRk285IlyLjM9cjHADldoGl2c2Fd3%2FuSQTYAP26ihXcO6v5qoRVYYYH7OAuDKKYALIbfFPGoq0djG9FgpJ99PP9ZtW%2Fu7Lcj2pJTEzym%2B4UmqUtQkZxk5fMTfpQXSRZ8C%2BU3tw%2F1YRI2j6WndwMze%2FGUaq5E70JoWrCEeRiJOFPJuqKKap3rU54QHNFnjXBUEMUJwinuhEv0obCePbKbSNo2vkclqRum9HXRXZkNHuRpyPE2ysZB8SRp1pd09hPMg%2BTsdgEI11x49Ni2s5CE3otvUYro6RMtqaC59spPcQmuBmpmpfsn6%2FWEbQRk6p1e9i2kG0FXxKcDcHXR0Brm8%2FNmqxuauYd3Cag%3D%3D";
+        window.__genspark_locale = "ja-JP";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDr/1pipOWewUSBKFOoBAVUasBMr6MICxy3GJjvqizjCNNV7h/Quj57tbx4oKwsdNDMxYj5ujJlm+srrAyNCDXaQeN7jesyP//03CsS4o/hLYmOTGbACEAXsboe4ZOwWffIepgI6SBUy17XgY4347AwAJt/2Y1VIuRk285IlyLjM9cjHADldoGl2c2Fd3/uSQTYAP26ihXcO6v5qoRVYYYH7OAuDKKYALIbfFPGoq0djG9FgpJ99PP9ZtW/u7Lcj2pJTEzym+4UmqUtQkZxk5fMTfpQXSRZ8C+U3tw/1YRI2j6WndwMze/GUaq5E70JoWrCEeRiJOFPJuqKKap3rU54QHNFnjXBUEMUJwinuhEv0obCePbKbSNo2vkclqRum9HXRXZkNHuRpyPE2ysZB8SRp1pd09hPMg+TsdgEI11x49Ni2s5CE3otvUYro6RMtqaC59spPcQmuBmpmpfsn6/WEbQRk6p1e9i2kG0FXxKcDcHXR0Brm8/NmqxuauYd3Cag==";
+    </script>
+    
+    <script id="html_notice_dialog_script" src="https://www.genspark.ai/notice_dialog.js"></script>
+    
